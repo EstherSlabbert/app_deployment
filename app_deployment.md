@@ -42,7 +42,7 @@ end
 
 ![pm2 install 5](pm2_install5.png)
 
-1.  Next install npm by entering: `npm install`. (Note: npm (node package manager) is package manager for JavaScript in this case nodejs)
+9.  Next install npm by entering: `npm install`. (Note: npm (node package manager) is package manager for JavaScript in this case nodejs)
 
 ![npm install](npm_install.png)
 
