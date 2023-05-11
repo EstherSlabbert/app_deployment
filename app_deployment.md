@@ -18,7 +18,7 @@ end
 
 ![Python Properties](python_properties.png)
 
-<img src="python_properties_fin.png" width="80%" height="80%" />
+![Python Properties fin](python_properties_fin.png)
 
 6. Next enter:`curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`, which changes source to look for nodejs to one from specific url internet. It should output the following:
 
