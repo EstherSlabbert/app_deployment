@@ -45,10 +45,4 @@ end
 
 2. Run `vagrant up` and your app should automatically run and be accessible on your web browser with the following link: http://192.168.10.100:3000/
 
-Note: `vagrant reload`
-`vagrant provision`
-
-Use `pm2 stop app.js` to end running app.js
-
-
 Note: To move running app to the background: Press Ctrl + Z. This will suspend the app and bring you back to the command prompt. Then type the command `bg` (short for "background"). This will move the app to the background and allow you to continue using the terminal. If you want to bring the app back to the foreground later, you can type the command `fg` (short for "foreground"). **Warning**: some apps may not work properly when they are moved to the background, so you should test your app to make sure it still functions as expected.
