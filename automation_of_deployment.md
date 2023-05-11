@@ -28,7 +28,7 @@ cd /home/vagrant/app
 
 npm install
 
-pm2 start app.js
+node app.js
 ```
 
 And in your Vagrantfile:

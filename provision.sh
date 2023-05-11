@@ -20,4 +20,4 @@ cd /home/vagrant/app
 
 npm install
 
-pm2 start app.js --name myapp
+node app.js

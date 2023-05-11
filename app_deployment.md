@@ -42,13 +42,13 @@ end
 
 ![pm2 install 5](pm2_install5.png)
 
-9.  Next install npm by entering: `npm install`. (Note: npm (node package manager) is package manager for JavaScript in this case nodejs)
-
-![npm install](npm_install.png)
-
-10. Navigate into the 'app' directory in your VM by using the `cd` command.
+9.  Navigate into the 'app' directory in your VM by using the `cd` command.
 
 ![navigate](navigate.png)
+
+10. Next install npm by entering: `npm install`. (Note: npm (node package manager) is package manager for JavaScript in this case nodejs)
+
+![npm install](npm_install.png)
 
 11. Now we can run our app by either entering: `npm start` or `node app.js`. This should return "Your app is ready and listening on port 3000" as a foreground process as shown in the image below:
 
