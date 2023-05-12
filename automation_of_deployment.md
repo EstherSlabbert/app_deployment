@@ -23,6 +23,8 @@ npm install
 node app.js
 ```
 
+(Note: you may use `npm start` as the last command in the 'provision.sh' file rather than `node app.js`. Either will work.)
+
 And in your 'Vagrantfile':
 ```ruby
 Vagrant.configure("2") do |config|
