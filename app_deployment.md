@@ -1,5 +1,7 @@
 # Deploy Application with Nginx on Virtual Machine using Vagrant
 
+To automate this process reference: [automation of app deployment](https://github.com/EstherSlabbert/tech230_app_deployment/blob/main/automation_of_deployment.md).
+
 1. Open VirtualBox and Git Bash terminal and set folder destination for Virtual Machine (VM) using the change directory command `cd` in the terminal to the appropriate directory containing your 'Vagrantfile' and 'provision.sh' files (see [automation_nginx_deployment.md](https://github.com/EstherSlabbert/tech230_vagrant_intro/blob/main/automation_nginx_deployment.md) and [nginx_deployment.md](https://github.com/EstherSlabbert/tech230_vagrant_intro/blob/main/nginx_deployment.md) to get these files if you do not already have them) and the extracted 'app' and 'environment' folders provided by the developers.
 2. Open and add a line in 'Vagrantfile' `config.vm.synced_folder "app", "/home/vagrant/app"` to put/sync 'app' folder from local machine to VM. Save. 'Vagrantfile' should have same code/similar to code block below:
 ```ruby

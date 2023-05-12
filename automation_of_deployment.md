@@ -1,10 +1,12 @@
 # Automation of app deployment
 
+See manual steps and more detailed information of app deployment here: [app deployment](https://github.com/EstherSlabbert/tech230_app_deployment/blob/main/app_deployment.md)
 Rather than going through all the required updates and installs we can modify our 'provision.sh' file to automate them.
 
 ## Steps to automate
 
-1. Have the following code in your provision.sh file:
+1. Ensure Vagrant is installed on your device and you have all the appropriate files and folders.
+2. Have the following code in your 'provision.sh' file:
 ```shell
 #!/bin/bash
 
@@ -31,7 +33,7 @@ npm install
 node app.js
 ```
 
-And in your Vagrantfile:
+And in your 'Vagrantfile':
 ```ruby
 Vagrant.configure("2") do |config|
 
