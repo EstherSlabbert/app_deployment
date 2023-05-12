@@ -68,3 +68,7 @@ This block specifies that Nginx should listen on port 80 for requests to example
 
 3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors using: `sudo nginx -t`. If there are no errors, reload the Nginx service with: `sudo systemctl reload nginx`.
 4. Verify the setup: Access the URL you specified in the `server_name` directive in your web browser, and verify that the expected content is displayed.
+
+[Set up your own Reverse Proxy](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04)
+
+Additional notes on Environment Variables [microsoft overview](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.3), [article on how they are used in the industry](https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa).
