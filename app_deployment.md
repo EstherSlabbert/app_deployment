@@ -16,7 +16,7 @@ end
 ```
 3. `vagrant up` in terminal to create and start running the VM.
 4. `vagrant ssh` in terminal to enter the VM. 
-5. In your VM environment enter: `sudo apt-get install python-software-properties -y` in order to access the correct/needed version of nodejs. Allow it to complete. The following image should be the output:
+5. In your VM environment enter: `sudo apt-get install python-software-properties -y` in order to access the correct/needed version of nodejs as this installs  the 'python-software-properties' package. Allow it to complete. The following image should be the output:
 
 ![Python Properties](python_properties.png)
 
@@ -59,3 +59,17 @@ end
 12. Now we can go to our web browser and enter '192.168.10.100:3000' into our url bar to show nodejs app that we ran. It should show the following:
 
 ![Running web server app](running_app_web_server.png)
+
+Additional notes:
+
+`curl` is a tool to transfer data from a server (in this case to download a script from the provided url)
+
+`-s` flag tells a process/tool to run silently.
+
+`-L` flag tells the tool/process to follow redirects.
+
+`sudo` gives extra privileges when running a command.
+
+`-E` flag tells `sudo` to preserve the current user's environment variables while running the command.
+
+`|` pipes into another command (in this case `bash`, which is the command interpreter that executes script)
