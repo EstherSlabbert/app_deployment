@@ -48,6 +48,8 @@ This outlines the automation of updates and installations necessary for the app 
 
 ### Setting up db VM with MongoDB
 
+Note: this can be automated by putting the relevant commands into a separate provision_db.sh file and calling that file in the Vagrantfile `app.vm.provision "shell", path: "provision_db.sh", privileged: false` under the db configuration.
+
 6. In your **db** VM terminal enter the following commands `sudo apt-get update -y` followed by `sudo apt-get upgrade -y`. This ensures your system is up-to-date.
 7. Now we can install MongoDB on the **db** VM. Start by adding/importing the specified GPG key from the relevant server with the following command: `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927`
 8. Enter this command: `echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list`. It adds a MongoDB repository to the list of sources used by `apt-get` to install packages, allowing us to download and install MongoDB.

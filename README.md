@@ -34,7 +34,7 @@ Another key difference is that reverse proxies are typically deployed in front o
 
 Overall, reverse proxies are an essential component of modern web applications, helping to improve performance, reliability, and security by managing traffic and optimizing server resources.
 
-[Reverse Proxy Diagram]()
+[Proxy vs Reverse Proxy Diagram](https://miro.medium.com/v2/resize:fit:1200/1*WUQ1wM4V1GCAPvyigOASTg.png)
 
 ### What is Nginx's default configuration?
 
@@ -46,8 +46,8 @@ Additionally, the default configuration includes comments that explain how to co
 
 ### Setting up an Nginx reverse proxy
 
-1. Install Nginx.
-2. Configure Nginx. The default Nginx configuration file is located at /etc/nginx/nginx.conf. You will need to modify it to define your reverse proxy configuration.
+1. Install Nginx. Using the following commands:`sudo apt-get update` and then `sudo apt-get install nginx`.
+2. Configure Nginx. The default Nginx configuration file is located at `/etc/nginx/nginx.conf`. You will need to modify it to define your reverse proxy configuration.
 
 ```
 server {
@@ -66,5 +66,5 @@ server {
 
 This block specifies that Nginx should listen on port 80 for requests to example.com, and pass those requests to the server running on localhost:3000. The proxy_set_header directives are used to pass the original Host, X-Real-IP, and X-Forwarded-For headers from the client to the server.
 
-3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors. `sudo nginx -t` If there are no errors, reload the Nginx service: `sudo systemctl reload nginx`
+3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors using: `sudo nginx -t`. If there are no errors, reload the Nginx service with: `sudo systemctl reload nginx`.
 4. Verify the setup: Access the URL you specified in the `server_name` directive in your web browser, and verify that the expected content is displayed.
