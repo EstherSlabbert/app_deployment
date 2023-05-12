@@ -41,3 +41,5 @@ end
 3. If you wish to end this and remove your VM use the following command: `kill $(ps aux | grep '[v]agrant' | awk '{print $2}')`, this kills vagrant processes in your VM and allows you to `vagrant destroy`.
 
 Note: To move running app to the background: Press Ctrl + Z. This will suspend the app and bring you back to the command prompt. Then type the command `bg` (short for "background"). This will move the app to the background and allow you to continue using the terminal. If you want to bring the app back to the foreground later, you can type the command `fg` (short for "foreground"). **Warning**: some apps may not work properly when they are moved to the background, so you should test your app to make sure it still functions as expected.
+
+Alternatively, use `pm2 start app.js --no-daemon` to run the app in the background. To check the status of your app, use the command `pm2 list`. To stop your app, use the command `pm2 stop app` and to delete it, use the command `pm2 delete app`.
