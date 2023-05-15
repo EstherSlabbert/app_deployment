@@ -51,21 +51,35 @@ Additionally, the default configuration includes comments that explain how to co
 
 ```
 server {
-    listen 80;
-    server_name 129.168.10.100;
+    listen 80; # The server listens on port 80, which is the default HTTP port.
+    server_name 129.168.10.100; # The server name is set to 129.168.10.100.
 
-    location /posts {
-        proxy_pass http://192.168.10.100:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+    location /posts { # This block defines the location of the server block.
+        proxy_pass http://192.168.10.100:3000; # The requests are forwarded to the specified IP and port.
+        proxy_set_header Host $host; # Sets the value of the "Host" header field to the value of the $host variable.
+        proxy_set_header X-Real-IP $remote_addr; # Sets the value of the "X-Real-IP" header field to the IP address of the client.
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Sets the value of the "X-Forwarded-For" header field to the client IP and any forwarded IP addresses.
+        proxy_set_header X-Forwarded-Proto $scheme; # This header is used to inform the backend server of the protocol (HTTP or HTTPS) used by the client to access the Nginx server.
+    }
+
+    error_page 404 /404.html; # The server returns a custom 404 error page for requests that result in a 404 status code.
+    location = /404.html { # This block defines the location of the 404 error page.
+        internal; # This directive tells Nginx to handle the request internally and not return it to the client.
+        root /usr/share/nginx/html; # Sets the document root directory where the 404.html file is located.
     }
 }
-
-
 ```
-
+OR
+```
+location / {
+        proxy_pass http://localhost:3000; # proxies the request to http://localhost:3000, which is the address of the backend server
+        proxy_http_version 1.1; # sets the HTTP version used for proxy requests to 1.1.
+        proxy_set_header Upgrade $http_upgrade; # negotiates a protocol upgrade to WebSocket or another protocol.
+        proxy_set_header Connection 'upgrade'; # indicates that the connection should be upgraded to a different protocol.
+        proxy_set_header Host $host; # specifies the hostname of the proxied server.
+        proxy_cache_bypass $http_upgrade; # ensures that WebSocket connections are not cached.
+    }
+```
 This block specifies that Nginx should listen on port 80 for requests to example.com, and pass those requests to the server running on localhost:3000.
 3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors using: `sudo nginx -t`. If there are no errors, reload the Nginx service with: `sudo systemctl reload nginx` or `sudo systemctl restart nginx` to restart it.
 4. Verify the setup: Access the URL you specified in the `server_name` directive in your web browser, and verify that the expected content is displayed.
