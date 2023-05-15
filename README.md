@@ -47,7 +47,7 @@ Additionally, the default configuration includes comments that explain how to co
 ### Setting up an Nginx reverse proxy
 
 1. Install Nginx. Using the following commands:`sudo apt-get update` and then `sudo apt-get install nginx`.
-2. Configure Nginx. The default Nginx configuration file is located at `/etc/nginx/nginx.conf`. You will need to modify it to define your reverse proxy configuration.
+2. Configure Nginx. The default Nginx configuration file is located at `/etc/nginx/nginx.conf` using `sudo nano /etc/nginx/sites-available/default`. You will need to modify it to define your reverse proxy configuration.
 
 ```
 server {
@@ -56,18 +56,19 @@ server {
 
     location / {
         proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 
 ```
 
-This block specifies that Nginx should listen on port 80 for requests to example.com, and pass those requests to the server running on localhost:3000. The proxy_set_header directives are used to pass the original Host, X-Real-IP, and X-Forwarded-For headers from the client to the server.
-
-3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors using: `sudo nginx -t`. If there are no errors, reload the Nginx service with: `sudo systemctl reload nginx`.
-4. Verify the setup: Access the URL you specified in the `server_name` directive in your web browser, and verify that the expected content is displayed.
+This block specifies that Nginx should listen on port 80 for requests to example.com, and pass those requests to the server running on localhost:3000.
+3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors using: `sudo nginx -t`. If there are no errors, reload the Nginx service with: `sudo systemctl reload nginx` or `sudo systemctl restart nginx` to restart it.
+4. Verify the setup: Access the URL you specified in the `server_name` or appropriate IP address directive in your web browser, and verify that the expected content is displayed.
 
 [Set up your own Reverse Proxy](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04)
 
