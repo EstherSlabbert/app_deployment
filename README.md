@@ -34,7 +34,13 @@ Another key difference is that reverse proxies are typically deployed in front o
 
 Overall, reverse proxies are an essential component of modern web applications, helping to improve performance, reliability, and security by managing traffic and optimizing server resources.
 
-[Proxy vs Reverse Proxy Diagram](https://miro.medium.com/v2/resize:fit:1200/1*WUQ1wM4V1GCAPvyigOASTg.png)
+Simply put: A proxy is a server that acts as an intermediary between a client and another server. When a client makes a request to access a resource, the request is first sent to the proxy server, which then forwards the request to the server that actually hosts the resource. The response from the server is then sent back to the proxy, which in turn sends it back to the client.
+
+A reverse proxy, on the other hand, is a server that acts as an intermediary between a client and one or more servers that host resources. When a client makes a request to access a resource, the request is first sent to the reverse proxy server. The reverse proxy then determines which server actually hosts the resource and forwards the request to that server. The response from the server is then sent back to the reverse proxy, which in turn sends it back to the client.
+
+So, the main difference between a proxy and a reverse proxy is the direction of the communication flow. With a proxy, the client communicates with the proxy, which then communicates with the server. With a reverse proxy, the client communicates with the reverse proxy, which then communicates with one or more servers.
+
+![Proxy vs Reverse Proxy Diagram](https://miro.medium.com/v2/resize:fit:1200/1*WUQ1wM4V1GCAPvyigOASTg.png)
 
 ### What is Nginx's default configuration?
 
@@ -50,16 +56,29 @@ Additionally, the default configuration includes comments that explain how to co
 2. Configure Nginx. The default Nginx configuration file is located at `/etc/nginx/nginx.conf` using `sudo nano /etc/nginx/sites-available/default`. You will need to modify it to define your reverse proxy configuration.
 
 ```
+# The most basic and essential configurations for a reverse proxy
+location / {
+        proxy_pass http://localhost:3000; # proxies the request to http://localhost:3000, which is the address of the backend server
+        proxy_set_header Host $host; # specifies the hostname of the proxied server.
+}
+```
+OR
+```
+# More detailed/in-depth configurations
 server {
     listen 80; # The server listens on port 80, which is the default HTTP port.
-    server_name 129.168.10.100; # The server name is set to 129.168.10.100.
+    server_name _; # The server name is set to _ which dictates a catch-all server block that matches all requests that do not match any other server blocks.
 
     location /posts { # This block defines the location of the server block.
-        proxy_pass http://192.168.10.100:3000; # The requests are forwarded to the specified IP and port.
+        proxy_pass http://localhost:3000; # The requests are forwarded to the specified IP and port.
+        proxy_http_version 1.1; # sets the HTTP version used for proxy requests to 1.1.
+        proxy_set_header Upgrade $http_upgrade; # negotiates a protocol upgrade to WebSocket or another protocol.
+        proxy_set_header Connection 'upgrade'; # indicates that the connection should be upgraded to a different protocol.
         proxy_set_header Host $host; # Sets the value of the "Host" header field to the value of the $host variable.
         proxy_set_header X-Real-IP $remote_addr; # Sets the value of the "X-Real-IP" header field to the IP address of the client.
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;  # Sets the value of the "X-Forwarded-For" header field to the client IP and any forwarded IP addresses.
         proxy_set_header X-Forwarded-Proto $scheme; # This header is used to inform the backend server of the protocol (HTTP or HTTPS) used by the client to access the Nginx server.
+        proxy_cache_bypass $http_upgrade; # ensures that WebSocket connections are not cached.
     }
 
     error_page 404 /404.html; # The server returns a custom 404 error page for requests that result in a 404 status code.
@@ -69,21 +88,14 @@ server {
     }
 }
 ```
-OR
-```
-location / {
-        proxy_pass http://localhost:3000; # proxies the request to http://localhost:3000, which is the address of the backend server
-        proxy_http_version 1.1; # sets the HTTP version used for proxy requests to 1.1.
-        proxy_set_header Upgrade $http_upgrade; # negotiates a protocol upgrade to WebSocket or another protocol.
-        proxy_set_header Connection 'upgrade'; # indicates that the connection should be upgraded to a different protocol.
-        proxy_set_header Host $host; # specifies the hostname of the proxied server.
-        proxy_cache_bypass $http_upgrade; # ensures that WebSocket connections are not cached.
-    }
-```
-This block specifies that Nginx should listen on port 80 for requests to example.com, and pass those requests to the server running on localhost:3000.
+OR some combination of the above.
+
+This block specifies that Nginx should listen on port 80 for requests to _, and pass those requests to the server running on localhost:3000.
 3. Test the configuration: Once you have updated the configuration file, test it to make sure there are no syntax errors using: `sudo nginx -t`. If there are no errors, reload the Nginx service with: `sudo systemctl reload nginx` or `sudo systemctl restart nginx` to restart it.
 4. Verify the setup: Access the URL you specified in the `server_name` directive in your web browser, and verify that the expected content is displayed.
 
 [Set up your own Reverse Proxy](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04)
 
 Additional notes on Environment Variables [microsoft overview](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_environment_variables?view=powershell-7.3), [article on how they are used in the industry](https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa).
+
+Notes: The `_` symbol is used as a wildcard character and represents any name that is not defined in the server blocks.
