@@ -56,14 +56,14 @@ Note: this can be automated by putting the relevant commands into a separate pro
 9. Run `sudo apt-get update -y` and `sudo apt-get upgrade -y` again to ensure that the needed updates for using MongoDB are installed.
 10. Run `sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20` to install the specified MongoDB package and its related components.
 11. To ensure that it has installed correctly enter: `mongod --version`. This should return the version of MongoDB.
-12. Now we can start MongoDB service with: `sudo systemctl start mongod`.
+12. Now we can start MongoDB service with: `sudo systemctl start mongod`. (12 & 13 can be skipped as they will need to be redone.)
 13. Next enable MongoDB with: `sudo systemctl enable mongod`.This enables the MongoDB service to start automatically when the system boots up, meaning you don't have to manually start the MongoDB service every time the system restarts. (Note: You can check the status of the MongoDB service using `sudo systemctl status mongod`).
 
 #### Changes for MongoDB to interact with app VM
 
 14. Now we need to open the MongoDB configuration file by `sudo nano /etc/mongod.conf`.
 15. With the .conf file open find the section containing the network interfaces, specifically the 'binIP'. It should be set to the default `127.0.0.1`, change this to be `0.0.0.0` so that it listens to all network interfaces. Exit the file and save it (Ctrl + X, confirm 'Y', Enter).
-16. Implement this change to the configuration by entering: `sudo systemctl restart mongod`.
+16. Implement this change to the configuration by entering: `sudo systemctl restart mongod`. (if you have not started mongod see step 12)
 17. Enable the change by entering: `sudo systemctl enable mongod`, which ensures it will automatically be set to this whenever the system boots up.
 
 ### Connecting app VM with db VM - Changes the static webserver app page to be dynamic
