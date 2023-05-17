@@ -24,6 +24,7 @@ Vagrant.configure("2") do |config|
 end
 ```
 This code creates 2 VMs in one 'Vagrantfile'. The 1st VM is called 'app' and contains the app program. This VM has some provisioning, which sets the machine up for use according to the specifications laid out in the 'provision.sh' file. The 2nd VM is called 'db' and will ultimately contain the database for the app program.
+
 3. Open the 'provision.sh' file (create one if you do not have one) and edit it to have the following and then save it:
 ```shell
 #!/bin/bash
