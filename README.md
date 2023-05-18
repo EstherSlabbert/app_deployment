@@ -12,6 +12,8 @@ This repository contains 3 markdown files detailing the deployment of an app to 
 
 It also contains a Vagrantfile and a provision.sh file to showcase what these files should look like for the app deployment.
 
+The rest of this README gives information on ports, proxies and details how to set up a reverse proxy with Nginx.
+
 ## Nginx reverse proxy - information
 
 [Beginner's guide to Nginx](https://nginx.org/en/docs/beginners_guide.html)
