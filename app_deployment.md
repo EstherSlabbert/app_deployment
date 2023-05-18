@@ -36,11 +36,11 @@ end
 
 ![pm2 install 1](/images/pm2_install1.png)
 
-<img src="pm2_install2.png" width="50%" height="50%" />
+<img src="/images/pm2_install2.png" width="50%" height="50%" />
 
-<img src="pm2_install3.png" width="50%" height="50%" />
+<img src="/images/pm2_install3.png" width="50%" height="50%" />
 
-<img src="pm2_install4.png" width="40%" height="40%" />
+<img src="/images/pm2_install4.png" width="40%" height="40%" />
 
 ![pm2 install 5](/images/pm2_install5.png)
 
