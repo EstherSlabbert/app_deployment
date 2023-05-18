@@ -63,7 +63,7 @@ Note: this can be automated by putting the relevant commands into a separate pro
 #### Changes for MongoDB to interact with app VM
 
 14. Now we need to open the MongoDB configuration file by `sudo nano /etc/mongod.conf`.
-15. With the .conf file open find the section containing the network interfaces, specifically the 'binIP'. It should be set to the default `127.0.0.1`, change this to be `0.0.0.0` so that it listens to all network interfaces. Exit the file and save it (Ctrl + X, confirm 'Y', Enter).
+15. With the .conf file open find the section containing the network interfaces, specifically the 'bindIP'. It should be set to the default `127.0.0.1`, change this to be `0.0.0.0` so that it listens to all network interfaces. Exit the file and save it (Ctrl + X, confirm 'Y', Enter).
 16. Implement this change to the configuration by entering: `sudo systemctl restart mongod`. (if you have not started mongod see step 12)
 17. Enable the change by entering: `sudo systemctl enable mongod`, which ensures it will automatically be set to this whenever the system boots up.
 
