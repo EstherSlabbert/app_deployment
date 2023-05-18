@@ -18,23 +18,23 @@ end
 4. `vagrant ssh` in terminal to enter the VM. 
 5. In your VM environment enter: `sudo apt-get install python-software-properties -y` in order to access the correct/needed version of nodejs as this installs  the 'python-software-properties' package. Allow it to complete. The following image should be the output:
 
-![Python Properties](python_properties.png)
+![Python Properties](/images/python_properties.png)
 
-![Python Properties fin](python_properties_fin.png)
+![Python Properties fin](/images/python_properties_fin.png)
 
 6. Next enter:`curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -`, which changes source to look for nodejs to one from specific url internet. It should output the following:
 
-![curl1](curl1.png)
+![curl1](/images/curl1.png)
 
-![curl2](curlfin.png)
+![curl2](/images/curlfin.png)
 
 7. Next installs correct version of nodejs by entering: `sudo apt-get install nodejs -y`. Following should be output:
 
-![nodejs install 1](nodejs_install.png)
+![nodejs install 1](/images/nodejs_install.png)
 
 8. Next install pm2 and make it available globally (to all on VM) by entering: `sudo npm install pm2 -g`. (Note: PM2 is a process manager for JavaScript runtime).
 
-![pm2 install 1](pm2_install1.png)
+![pm2 install 1](/images/pm2_install1.png)
 
 <img src="pm2_install2.png" width="50%" height="50%" />
 
@@ -42,23 +42,23 @@ end
 
 <img src="pm2_install4.png" width="40%" height="40%" />
 
-![pm2 install 5](pm2_install5.png)
+![pm2 install 5](/images/pm2_install5.png)
 
 9.  Navigate into the 'app' directory in your VM by using the `cd` command.
 
-![navigate](navigate.png)
+![navigate](/images/navigate.png)
 
 10. Next install npm by entering: `npm install`. (Note: npm (node package manager) is package manager for JavaScript in this case nodejs)
 
-![npm install](npm_install.png)
+![npm install](/images/npm_install.png)
 
 11. Now we can run our app by either entering: `npm start` or `node app.js`. This should return "Your app is ready and listening on port 3000" as a foreground process as shown in the image below:
 
-![Launch](final_launch.png)
+![Launch](/images/final_launch.png)
 
 12. Now we can go to our web browser and enter '192.168.10.100:3000' into our url bar to show nodejs app that we ran. It should show the following:
 
-![Running web server app](running_app_web_server.png)
+![Running web server app](/images/running_app_web_server.png)
 
 Additional notes:
 
