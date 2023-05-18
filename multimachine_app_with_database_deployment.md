@@ -78,7 +78,7 @@ Note: this can be automated by putting the relevant commands into a separate pro
 24. Now we can run the app using `node app.js` or `npm start`. (Note: This may not work if it is already running. If it is running you can use `ps aux` to locate the nodejs processes and `sudo kill -9 <process id number here>` to terminate the processes and try to run it.)
 25. Now you should be able to access the deployed app that has accessed the database at http://192.168.10.100:3000/posts from your web browser. Result:
 
-![dynamic webpage](final_resulting_webpage.png)
+![dynamic webpage](/images/final_resulting_webpage.png)
 
 
 ## Additional Notes:
