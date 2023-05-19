@@ -61,7 +61,6 @@ Additionally, the default configuration includes comments that explain how to co
 # The most basic and essential configurations for a reverse proxy
 location / {
         proxy_pass http://localhost:3000; # proxies the request to http://localhost:3000, which is the address of the backend server
-        proxy_set_header Host $host; # specifies the hostname of the proxied server.
 }
 ```
 OR
