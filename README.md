@@ -71,7 +71,7 @@ server {
     server_name _; # The server name is set to _ which dictates a catch-all server block that matches all requests that do not match any other server blocks.
     # you may wish to change _ to server name and following change localhost to server name as well.
 
-    location /posts { # This block defines the location of the server block.
+    location / { # This block defines the location of the server block.
         proxy_pass http://localhost:3000; # The requests are forwarded to the specified IP and port.
         proxy_http_version 1.1; # sets the HTTP version used for proxy requests to 1.1.
         proxy_set_header Upgrade $http_upgrade; # negotiates a protocol upgrade to WebSocket or another protocol.
